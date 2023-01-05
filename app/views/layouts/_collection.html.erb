@@ -1,0 +1,15 @@
+<div class="card collection-item my-2">
+  <a href="<%= collection_path(collection) %>">
+    <img src="<%= collection['image_url'] %>" class="card-img-top" />
+    <div class="card-body">
+      <div class="card-img-overlay">
+        <h5 class="card-title">
+          <%= collection['name'] %>
+        </h5>
+        <span class="badge badge rounded-pill bg-secondary">
+          <%= (User.find_by(id: collection.curator).eth_address if collection.curator.to_i> 0) || "0xnull" %>
+        </span>
+      </div>
+    </div>
+  </a>
+</div>

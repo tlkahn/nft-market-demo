@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 p-4">
+          <div id="demo" class="carousel slide" data-bs-ride="true">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="<%= @item.image_url %>" alt="Los Angeles" class="d-block w-100" />
+              </div>
+              <div class="carousel-item">
+                <iframe
+                  src="https://www.youtube.com/embed/<%=@item.youtube_url%>?loop=1&modestbranding=1&autoplay=1&playlist=<%=@item.youtube_url%>"
+                  rameborder=0 allowfullscreen>
+                  <script>function execute_YTvideo() { return youtube.query({ ids: "channel==MINE", startDate: "2019-01-01", endDate: "2019-12-31", metrics: "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained", dimensions: "day", sort: "day" }).then(function (e) { }, function (e) { console.error("Execute error", e) }) }</script>
+                </iframe>
+              </div>
+              <div class="carousel-item">
+                <img src="<%= @item.image_url %>" alt="Los Angeles" class="d-block w-100" />
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="description py-4">
+            <div class="user-avatar-wrapper">
+              <div class="user-label creator-address align-center w-100">
+                <span class="user-name w-50 d-inline-block text-truncate">CREATED BY <%= @item.author %>
+                </span>
+                <p class="user-time text_bold">
+                  <%= @item.updated_at.to_formatted_s(:rfc822)[..-10] %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row p-4">
+            <div class="item-name-price-wrapper d-flex justify-content-between align-items-top">
+              <div class="item-summary">
+                <h4>
+                  <%= @item.name %>
+                </h4>
+                <span class="badge badge rounded-pill bg-dark">
+                  <%= link_to @item.collection.name, @item, class: "text-decoration-none link-light" %>
+                </span>
+                <span class="badge badge rounded-pill bg-dark">New</span>
+              </div>
+              <div class="text-secondary pt-1">
+                <h5>
+                  <i class="fa-brands fa-ethereum"></i>&nbsp<%= @item.price_eth.round(2) %>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="row px-4">
+            <div class="description">
+              <div class="user-avatar-wrapper">
+                <figure>
+                  <img src="#" alt="user avatar" class="user-avatar" data-eth-addr="<%= current_user&.eth_address %>" />
+                </figure>
+                <div class="user-label creator-address align-center w-100">
+                  <span class="user-name d-inline-block text-truncate w-50">Owned by <%= @item.author %>
+                  </span>
+                  <p class="user-time text_bold">
+                    <%= @item.updated_at.to_formatted_s(:rfc822)[..-10] %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row p-4 item-details-history">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                  type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                  Description
+                </button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                  type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                  History
+                </button>
+              </div>
+            </nav>
+            <div class="tab-content mx-2" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                Description:
+                <p>
+                  <%= @item.description %>
+                </p>
+                IPFS hash:
+                <p class="metadata-ipfs-hash">
+                  <%= @item.metadata_ipfs_hash %>
+                </p>
+                Contract address:
+                <p class="contract-address">
+                  <%= @item.contract_address %>
+                </p>
+                Item id:
+                <p class="item-id">
+                  <%= @item.id %>
+                </p>
+              </div>
+
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                TODO
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary btn-lg btn-block" id="buy-item-btn" href="#">
+          <i class="fa-brands fa-ethereum"></i>&nbsp;Buy
+        </a>
+        <a class="btn btn-primary btn-lg btn-block disabled" id="loading-item-btn" href="#">
+          <i class="fa fa-spinner fa-spin" id="loading-icon"></i>&nbsp;Buy
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>

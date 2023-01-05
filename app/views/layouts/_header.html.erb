@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg bg-light main-header">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-skull"></i>&nbsp;Pirate Radio Club</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-end align-items-center w-100">
+        <li class="nav-item dropdown w-100 p-2">
+          <div class="input-group global-search-input-wrapper">
+            <form action="/explore" method="get" class="d-flex w-100 justify-content-start">
+              <input class="form-control border-end-0 border global-search-input" type="search" placeholder="search"
+                id="example-search-input" name="global_search_text">
+              <span class="input-group-append d-flex align-items-center">
+                <button class="btn btn-outline" id="search-submit-button" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </form>
+          </div>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Buy
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">AAY</a></li>
+            <li><a class="dropdown-item" href="#">AAY/ETH Pair</a></li>
+          </ul>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/earn">Earn</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/explore">Explore</a>
+        </li>
+        <% if signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/upload">Create</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/curate">Curate</a>
+          </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item"
+                  href="https://toeinriver.notion.site/MetART-Profile-76044708ca3d4b4e9cbe0397971fbc25">About us</a>
+              </li>
+              <li><a class="dropdown-item"
+                  href="https://toeinriver.notion.site/MetART-Doc-Guides-601a68cd4f6f467e9b933bdefd66a8f8">Docs</a>
+              </li>
+              <li><a class="dropdown-item"
+                  href="https://www.notion.so/toeinriver/ba5df6cefed04cf89fa030ac90157162">Roadmap</a></li>
+              <li><a class="dropdown-item" href="mailto:toeinriver@gmail.com">Careers</a></li>
+              <li><a class="dropdown-item" href="https://github.com/tlkahn/MetaRT-Support">Support</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <% if signed_in? %>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="#" alt="user avatar" class="user-avatar" data-eth-addr="<%= current_user.eth_address %>" />
+                <span>
+                  <%= truncate(current_user.eth_address, 7) %>
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Sign out" , sign_out_path,
+                    class: "dropdown-item text-secondary sign-out-link text-start" , method: :delete %>
+                </li>
+              </ul>
+              <% else %>
+                <%= link_to "Sign in" , sign_in_path, class: "nav-link text-secondary text-start" unless
+                  current_page?(sign_in_path) %>
+                  </a>
+                  <% end %>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>

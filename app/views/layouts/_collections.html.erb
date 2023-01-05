@@ -1,0 +1,16 @@
+<div class="col-lg-1"></div>
+<div class="col-lg-10">
+    <div class="row collections p-4">
+        <div class="collections-title d-flex justify-content-left align-items-center">
+            <h3>Current collections</h3>
+            &nbsp;
+            <i class="fas fa-refresh" data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh the page"></i>
+        </div>
+        <% collections.each do |collection | %>
+            <div class="col-md-6 col-lg-4 col-xs-12">
+                <%= render partial: 'layouts/collection' , locals: { collection: collection } %>
+            </div>
+            <% end %>
+    </div>
+</div>
+<div class="col-lg-1"></div>

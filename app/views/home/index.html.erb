@@ -1,0 +1,96 @@
+<%= render "layouts/device_size" %>
+    <div class="row">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-8 col-md-10">
+            <div class="row p-4 d-flex justify-content-around">
+                <div class="jumbotron-left col-lg-6">
+                    <h1 class="display-4">
+                        <%=@company_slogan%>
+                    </h1>
+                    <subtitle>
+                        <p class="lead">
+                            <%=@company_description%>
+                        </p>
+                    </subtitle>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="/upload" role="button">
+                            <%= @jumbotron_cta_text %>
+                        </a>
+                    </p>
+                </div>
+                <div class="jumbotron-right col-lg-6 d-flex justify-content-center">
+                    <%= image_tag @jumbotron_image_url, class: "img-fluid" %>
+                </div>
+            </div>
+            <div class="row p-4 d-flex align-items-center top-collections">
+                <div class="col-6">
+                    <h1>
+                        <%= @top_collection_title %>
+                    </h1>
+                </div>
+                <div class="col-6 text-end">
+                    <%=render partial: "layouts/period_filter" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="slickable">
+                    <% Collection.all.each do |collection| %>
+                        <%= render partial: "layouts/collection" , locals: {collection: collection} %>
+                            <% end %>
+                </div>
+            </div>
+            <div class="row p-4 d-flex align-items-center most-viewed">
+                <div class="col-6">
+                    <h1>
+                        <%= @most_viewed_title %>
+                    </h1>
+                </div>
+                <div class="col-6 text-end">
+                    <%=render partial: "layouts/period_filter" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="slickable">
+                    <% @most_viewed_items.each do |item| %>
+                        <%= render partial: "layouts/item" , locals: {item: item} %>
+                            <% end %>
+                </div>
+            </div>
+            <div class="row p-4 d-flex align-items-center latest-drops">
+                <div class="col-6">
+                    <h1>
+                        <%= @latest_drop_title %>
+                    </h1>
+                </div>
+                <div class="col-6 text-end">
+                    <%=render partial: "layouts/view_all_btn" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="slickable">
+                    <% @latest_drop_items.each do |item| %>
+                        <%= render partial: "layouts/item" , locals: {item: item} %>
+                            <% end %>
+                </div>
+            </div>
+            <div class="row p-4 d-flex align-items-center hot-bids">
+                <div class="col-6">
+                    <h1>
+                        <%= @hot_bids_title %>
+                    </h1>
+                </div>
+                <div class="col-6 text-end">
+                    <%=render partial: "layouts/view_all_btn" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="slickable">
+                    <% @hot_bids.each do |item| %>
+                        <%= render partial: "layouts/item" , locals: {item: item, badge_text: "new" } %>
+                            <% end %>
+                </div>
+            </div>
+        </div>
+        <div class=" col-lg-2 col-md-1">
+        </div>
+    </div>

@@ -1,0 +1,23 @@
+<div class="card collection-item mx-2 my-2">
+  <a href="<%= item_path(item) %>">
+    <img src="<%= item['image_url'] %>" class="card-img-top" />
+    <div class="card-img-overlay">
+      <h5 class="card-title">
+        <%= item['name'] %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <i class="fa-brands fa-ethereum"></i>&nbsp; <%= item['price_eth'].to_f.truncate(3) %>
+      </p>
+      <p class="card-text">
+        <%= (truncate(item['author'], 8) if item['author']) || "0xnull" %>
+      </p>
+      <% if item['badge_text'] %>
+        <span class="badge badge rounded-pill bg-dark">
+          <%= badge_text %>
+        </span>
+        <% end %>
+    </div>
+  </a>
+</div>

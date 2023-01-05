@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 d-flex justify-content-center align-items-center">
+    <div class="panel panel-default my-2">
+      <h3 class="panel-title text-center">Connect your wallet</h3>
+      <p class="reward-tip-text">
+        <i class="fa fa-exclamation-circle"></i>
+        Please note that you will need to have a wallet that supports the
+        <a href="#">Ethereum compatible</a> network.
+      </p>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="term-of-use-check">
+        <label class="form-check-label" for="term-of-use-check">I accept the <a href="#">Terms of
+        Use</a></label>
+      </div>
+      <div class="flex wallet-card text-center p-4">
+        <input type="hidden" id="random-text" value="<%=@random_text%>">
+        <button
+        class="flex justify-center space-x-4 items-center border border-solid  mt-6.5  bg-opacity-20 network-container"/>
+        <div class="justify-center space-x-4 wallet-option items-center">
+          <figure>
+            <img class="wallet-img"
+            src="https://d1gqvtt7oelrdv.cloudfront.net/assets/images/metamask.svg"
+            alt="metamask-logo" />
+          </figure>
+          <div class="text-22 font-semibold">MetaMask</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-1"></div>
+</div>

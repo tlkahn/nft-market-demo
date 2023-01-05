@@ -1,0 +1,26 @@
+<div class="image-area mt-4">
+  <img id="<%=image_id %>"
+  src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block" />
+</div>
+<div
+  class="input-group mb-3 px-2 d-flex justify-content-center flex-column align-items-center"
+>
+  <div class="upload-wrapper">
+    <input
+      class="upload form-control border-0"
+      name="upload_image"
+      accept="image/*"
+      id="<%= uploader_input_id %>"
+      type="file"
+      onchange='readURL(this, "<%= image_id %>");'
+    />
+  </div>
+  <div class="input-group-append mt-2">
+    <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+      <i class="fa fa-cloud-upload mr-2 text-muted"></i>&nbsp;
+      <small class="text-uppercase font-weight-bold text-muted"
+        >Choose file</small
+      >
+    </label>
+  </div>
+</div>

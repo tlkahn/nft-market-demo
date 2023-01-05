@@ -1,0 +1,11 @@
+<div class="card collection-item">
+  <img src="<%= item['image_url'] %>" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title"><%= item['name'] %></h5>
+    <p class="card-text">Ξ <%= item['price_eth'] %></p>
+    <p class="card-text"><%= item['author'] %></p>
+    <% if item['badge_text'] %>
+      <span class="badge badge rounded-pill bg-dark"><%= item['badge_text'] %></span>
+    <% end %>
+  </div>
+</div>
